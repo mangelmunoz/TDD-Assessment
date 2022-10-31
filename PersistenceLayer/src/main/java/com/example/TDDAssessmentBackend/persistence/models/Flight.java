@@ -20,7 +20,7 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
-    private Long id;
+    private Integer id;
 
     @Column
     private String flightName;
@@ -34,14 +34,17 @@ public class Flight {
     @Column
     private LocalDateTime arrival;
 
-    @Column
-    private String origin;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Country origin;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Country destination;
 
     @Column
-    private String destination;
+    private Double price;
 
-    @Column
-    private Float price;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Country> scales;
 
     @OneToMany(mappedBy = "flight", fetch = FetchType.EAGER)
     @JsonIgnore

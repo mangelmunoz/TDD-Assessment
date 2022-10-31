@@ -19,7 +19,7 @@ public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
-    private Long id;
+    private Integer id;
 
     @Column
     private String name;
