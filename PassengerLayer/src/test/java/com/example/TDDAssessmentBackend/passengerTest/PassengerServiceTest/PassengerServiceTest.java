@@ -16,4 +16,7 @@ public class PassengerServiceTest {
     public void when_given_then(){
         Assertions.assertTrue(true);
     }
+
+    //Comprobar que se envía un email al usuario cuando se registra
+
 }
