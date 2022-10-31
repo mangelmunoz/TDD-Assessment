@@ -39,6 +39,9 @@ public class Passenger {
     @Column
     private Boolean luggage;
 
+    @Column
+    private Double price;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_flight")
     private Flight flight;

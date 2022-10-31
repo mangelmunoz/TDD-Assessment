@@ -19,14 +19,20 @@ public class PersistenceService {
     public Passenger addPassengerToFlight(Passenger passenger){
 
         if( passenger.getYears() > 2 && passenger.getYears() < 9){
-            passenger.getFlight().setPrice(passenger.getFlight().getPrice()*0.5);
+            passenger.setPrice(passenger.getFlight().getPrice()*0.5);
         }
-
-        if(passenger.getYears() < 2){
-            passenger.getFlight().setPrice(0.0);
+        else if(passenger.getYears() < 2){
+            passenger.setPrice(0.0);
+        }
+        else{
+            passenger.setPrice(passenger.getFlight().getPrice());
         }
 
         return passengerRepository.save(passenger);
+    }
+
+    public Flight addFlight(Flight flight){
+        return flightRepository.save(flight);
     }
 
 }
