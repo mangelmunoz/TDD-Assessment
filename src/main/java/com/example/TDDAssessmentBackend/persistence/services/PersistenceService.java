@@ -12,6 +12,4 @@ public class PersistenceService {
     @Autowired
     public PassengerRepository passengerRepository;
 
-
-
 }

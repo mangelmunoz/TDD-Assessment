@@ -1,5 +1,8 @@
 package com.example.TDDAssessmentBackend.persistence.repository;
 
-public interface PassengerRepository {
+import com.example.TDDAssessmentBackend.persistence.models.Passenger;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PassengerRepository extends JpaRepository<Passenger, Long> {
 
 }
