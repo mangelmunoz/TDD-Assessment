@@ -7,6 +7,9 @@ import com.example.TDDAssessmentBackend.persistence.repository.PassengerReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PersistenceService {
 
@@ -33,6 +36,10 @@ public class PersistenceService {
 
     public Flight addFlight(Flight flight){
         return flightRepository.save(flight);
+    }
+
+    public List<Flight> getFlights(){
+        return flightRepository.findAll();
     }
 
 }
