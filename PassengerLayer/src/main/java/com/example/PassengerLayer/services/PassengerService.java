@@ -24,6 +24,7 @@ public class PassengerService {
 
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
+                .body(passengerDTO)
                 .when()
                 .post(baseURI + "/passenger/add")
                 .getBody().jsonPath();

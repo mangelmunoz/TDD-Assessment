@@ -27,19 +27,20 @@ public class PersistenceService {
     @Transactional
     public Passenger addPassengerToFlight(Passenger passenger){
 
+        Passenger passenger1 = passengerRepository.save(passenger);
+
+        Flight chosenFlight = flightRepository.findById(passenger.getFlight().getId()).get();
+
         if( passenger.getYears() > 2 && passenger.getYears() < 9){
-            passenger.setPrice(passenger.getFlight().getPrice()*0.5);
+            passenger.setPrice(chosenFlight.getPrice()*0.5);
         }
         else if(passenger.getYears() < 2){
             passenger.setPrice(0.0);
         }
         else{
-            passenger.setPrice(passenger.getFlight().getPrice());
+            passenger.setPrice(chosenFlight.getPrice());
         }
 
-        Passenger passenger1 = passengerRepository.save(passenger);
-
-        Flight chosenFlight = flightRepository.findById(passenger.getFlight().getId()).get();
         if(chosenFlight != null){
             chosenFlight.getPassengers().add(passenger1);
             flightRepository.save(chosenFlight);
@@ -58,7 +59,9 @@ public class PersistenceService {
     }
 
     public Passenger addPassenger(PassengerDTO passenger){
-        return passengerRepository.save(addPassengerToFlight(passengerMapper.fromPassengerDTOtoPassenger(passenger)));
+        Passenger passenger1 = passengerMapper.fromPassengerDTOtoPassenger(passenger);
+        passenger1.setPrice(0.0);
+        return passengerRepository.save(addPassengerToFlight(passenger1));
     }
 
     public List<Passenger> getPassengers(){
