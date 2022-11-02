@@ -20,8 +20,12 @@ public class AnalyticController {
         return analyticService.getAnalytics();
     }
 
-    @GetMapping("/{date}")
-    public List<Analytic> getAnalyticByDate(@PathVariable(value = "date") LocalDateTime date){
+    @GetMapping("/{year}/{month}/{day}")
+    public List<Analytic> getAnalyticByDate(@PathVariable(value = "year") Integer year,
+                                            @PathVariable(value = "month") Integer month,
+                                            @PathVariable(value = "day") Integer day){
+        LocalDateTime date = LocalDateTime.of(year, month, day, 0,0);
+
         return analyticService.getAnalyticsByDate(date);
     }
 
