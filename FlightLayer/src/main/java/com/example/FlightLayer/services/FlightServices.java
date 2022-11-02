@@ -18,7 +18,7 @@ public class FlightServices {
         RestAssured.baseURI = "http://localhost:8080/api/persistence";
     }
 
-    public List<FlightDTO> getFlights(){
+    public String getFlights(){
 
         //TODO: REST ASSURED TO THE PORT OF THE PERSISTENCE LAYER
 
@@ -28,9 +28,9 @@ public class FlightServices {
                 .get(baseURI)
                 .getBody().jsonPath();
 
-        System.out.println(statusCode);
+        System.out.println(statusCode.prettify());
 
-        return new ArrayList<>();
+        return statusCode.prettify();
     }
 
 }
