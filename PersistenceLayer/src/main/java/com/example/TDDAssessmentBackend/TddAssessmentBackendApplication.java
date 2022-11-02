@@ -31,6 +31,15 @@ public class TddAssessmentBackendApplication {
 			Flight flight4 = persistenceService.addFlight(new Flight(4, "RYA-2234","RYANAIR", LocalDateTime.now().plusDays(5), LocalDateTime.now().plusDays(5).plusHours(9), new Country(3, ECountry.TORREDONJIMENO), new Country(4, ECountry.TARRAGONA), 80.0, 50, true, false, null, new ArrayList<>(), new ArrayList<>()));
 			Flight flight5 = persistenceService.addFlight(new Flight(5, "RYA-2234","RYANAIR", LocalDateTime.now().plusDays(5), LocalDateTime.now().plusDays(5).plusHours(3), new Country(3, ECountry.TORREDONJIMENO), new Country(5, ECountry.SPARTA), 250.0, 50, true, false, null, List.of(new Country(4, ECountry.TARRAGONA)), new ArrayList<>()));
 
+			Flight flight6 = persistenceService.addFlight(new Flight(6, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(7).plusHours(5), LocalDateTime.now().plusDays(7).plusHours(8), new Country(10, ECountry.MURCIA), new Country(5, ECountry.SPARTA), 250.0, 50, true, false, null, null, new ArrayList<>()));
+			Flight flight7 = persistenceService.addFlight(new Flight(7, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(7).plusHours(1), LocalDateTime.now().plusDays(7).plusHours(3), new Country(6, ECountry.MILAN), new Country(10, ECountry.MURCIA), 250.0, 50, true, false, null, null, new ArrayList<>()));
+			Flight flight8 = persistenceService.addFlight(new Flight(8, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(6).plusHours(4), LocalDateTime.now().plusDays(6).plusHours(8), new Country(1, ECountry.VALENCIA), new Country(6, ECountry.MILAN), 250.0, 50, true, false, null, null, new ArrayList<>()));
+			Flight flight9 = persistenceService.addFlight(new Flight(9, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(6).plusHours(1), LocalDateTime.now().plusDays(6).plusHours(3), new Country(1, ECountry.VALENCIA), new Country(5, ECountry.SPARTA), 250.0, 50, true, false, null, List.of(new Country(6, ECountry.MILAN), new Country(10, ECountry.MURCIA)), new ArrayList<>()));
+
+			Flight flight10 = persistenceService.addFlight(new Flight(10, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(5), LocalDateTime.now().plusDays(5).plusHours(3), new Country(3, ECountry.TORREDONJIMENO), new Country(1, ECountry.VALENCIA), 250.0, 50, true, false, null, null, new ArrayList<>()));
+			Flight flight11 = persistenceService.addFlight(new Flight(11, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(5), LocalDateTime.now().plusDays(5).plusHours(3), new Country(5, ECountry.SPARTA), new Country(3, ECountry.TORREDONJIMENO), 250.0, 50, true, false, null, null, new ArrayList<>()));
+			Flight flight12 = persistenceService.addFlight(new Flight(12, "WIZ-2234","WIZZAIR", LocalDateTime.now().plusDays(5), LocalDateTime.now().plusDays(5).plusHours(3), new Country(5, ECountry.SPARTA), new Country(1, ECountry.VALENCIA), 250.0, 50, true, true, flight9, List.of(new Country(3, ECountry.TORREDONJIMENO)), new ArrayList<>()));
+
 
 		};
 

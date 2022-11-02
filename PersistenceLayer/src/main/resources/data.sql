@@ -8,5 +8,3 @@ INSERT INTO country (id, country) VALUES (7, 'SANTO_DOMINGO');
 INSERT INTO country (id, country) VALUES (8, 'PARIS');
 INSERT INTO country (id, country) VALUES (9, 'CARACAS');
 INSERT INTO country (id, country) VALUES (10, 'MURCIA');
-INSERT INTO country (id, country) VALUES (11, 'ACORUNA');
-INSERT INTO country (id, country) VALUES (12, 'BANGLADESH');

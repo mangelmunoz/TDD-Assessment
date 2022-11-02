@@ -20,15 +20,11 @@ public class FlightServices {
 
     public String getFlights(){
 
-        //TODO: REST ASSURED TO THE PORT OF THE PERSISTENCE LAYER
-
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
                 .when()
                 .get(baseURI)
                 .getBody().jsonPath();
-
-        System.out.println(statusCode.prettify());
 
         return statusCode.prettify();
     }
