@@ -31,6 +31,9 @@ public class Passenger {
     private String nationality;
 
     @Column
+    private String email;
+
+    @Column
     private String identification;
 
     @Column

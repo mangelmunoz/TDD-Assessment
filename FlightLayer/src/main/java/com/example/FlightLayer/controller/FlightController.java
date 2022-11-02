@@ -4,6 +4,7 @@ import com.example.FlightLayer.model.FlightDTO;
 import com.example.FlightLayer.services.FlightServices;
 import io.restassured.path.json.JsonPath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ public class FlightController {
     private FlightServices flightServices;
 
     @GetMapping
+    @CrossOrigin
     public String getFlights(){
         return flightServices.getFlights();
     }

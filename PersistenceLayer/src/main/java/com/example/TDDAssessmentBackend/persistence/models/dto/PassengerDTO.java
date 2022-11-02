@@ -1,11 +1,15 @@
-package com.example.PassengerLayer.model;
+package com.example.TDDAssessmentBackend.persistence.models.dto;
 
-import javax.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PassengerDTO {
-
-    private Integer id;
 
     private String name;
 
@@ -20,8 +24,6 @@ public class PassengerDTO {
     private Integer years;
 
     private Boolean luggage;
-
-    private Double price;
 
     private Integer flightId;
 }
