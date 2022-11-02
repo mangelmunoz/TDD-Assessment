@@ -24,6 +24,14 @@ public class FlightDTO {
 
     private Double price;
 
+    private Integer availableSeats;
+
+    private Boolean hasLuggagge;
+
+    private Boolean hasReturn;
+
+    private Integer returnFlight;
+
     private List<String> scales;
 
     private List<Integer> passengersIds;

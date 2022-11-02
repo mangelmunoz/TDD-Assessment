@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/api/persistence")
+@RequestMapping("/api/persistence")
 public class PersistenceController {
 
     @Autowired

@@ -43,6 +43,19 @@ public class Flight {
     @Column
     private Double price;
 
+    @Column
+    private Integer availableSeats;
+
+    @Column
+    private Boolean hasLuggagge;
+
+    @Column
+    private Boolean hasReturn;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_flight")
+    private Flight returnFlight;
+
     @OneToMany(fetch = FetchType.EAGER)
     private List<Country> scales;
 
