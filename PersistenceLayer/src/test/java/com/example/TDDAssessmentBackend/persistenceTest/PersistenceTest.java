@@ -40,13 +40,23 @@ public class PersistenceTest {
     }
 
     @Test
-    public void whenOrigenSelected_getListFromOrigin_returnsList(){
+    public void whenOriginSelected_getListFromOrigin_returnsList(){
 
         List<Flight> getFlightsByOrigin = persistenceService.getFlightsByOrigin("VALENCIA");
         List<Flight> getFlightsByOriginWrong = persistenceService.getFlightsByOrigin("KINGSTON");
 
         Assertions.assertNotEquals(0, getFlightsByOrigin.size());
         Assertions.assertEquals(0, getFlightsByOriginWrong.size());
+    }
+
+    @Test
+    public void whenOriginAndDestinationSelected_getListFromOriginAndDestination_returnsList(){
+
+        List<Flight> getFlightsByOriginAndDestination = persistenceService.getFlightsByOriginAndDestination("VALENCIA", "CORDOBA");
+        List<Flight> getFlightsByOriginAndDestinationWrong = persistenceService.getFlightsByOriginAndDestination("VALENCIA", "KINGSTON");
+
+        Assertions.assertNotEquals(0, getFlightsByOriginAndDestination.size());
+        Assertions.assertEquals(0, getFlightsByOriginAndDestinationWrong.size());
     }
 
     @Test

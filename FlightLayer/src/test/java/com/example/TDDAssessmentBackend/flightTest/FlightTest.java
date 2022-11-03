@@ -1,10 +1,6 @@
 package com.example.TDDAssessmentBackend.flightTest;
 
-import com.example.FlightLayer.services.FlightServices;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -12,8 +8,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class FlightTest {
 
-    @Autowired
-    public FlightServices flightServices;
+    @Test
+    public void givenAListOfOrigins_whenOriginSelected_returnAListOfDestinations(){
+
+
+
+    }
 
     @Test
     public void test(){

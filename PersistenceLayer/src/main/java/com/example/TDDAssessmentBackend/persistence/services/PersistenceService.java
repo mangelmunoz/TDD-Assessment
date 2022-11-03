@@ -164,4 +164,26 @@ public class PersistenceService {
             return new ArrayList<>();
         }
     }
+
+    public List<Flight> getFlightsByOriginAndDestination(String origin, String destination){
+        try {
+            Country originCountry = countryRepository.findByCountry(flightMapper.fromStringtoECountry(origin)).get();
+
+            if (originCountry == null) {
+                return new ArrayList<>();
+            }
+
+            Country destinationCountry = countryRepository.findByCountry(flightMapper.fromStringtoECountry(destination)).get();
+
+            if (destinationCountry == null) {
+                return new ArrayList<>();
+            }
+
+            return flightRepository.findByOriginAndDestination(originCountry, destinationCountry).orElse(new ArrayList<>());
+        }
+
+        catch(Exception e){
+            return new ArrayList<>();
+        }
+    }
 }
