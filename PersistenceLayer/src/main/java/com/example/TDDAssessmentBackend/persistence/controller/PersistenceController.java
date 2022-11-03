@@ -37,12 +37,12 @@ public class PersistenceController {
         return persistenceService.getPassengers();
     }
 
-    @GetMapping(value = "/flight/origin/{origin}")
+    @GetMapping(value = "/flight/filter/{origin}")
     public List<Flight> getFlightsByOrigin(@PathVariable(value = "origin") String origin){
         return persistenceService.getFlightsByOrigin(origin);
     }
 
-    @GetMapping(value = "/flight/origin/{origin}/{year}/{month}/{day}")
+    @GetMapping(value = "/flight/filter/{origin}/{year}/{month}/{day}")
     public List<Flight> getFlightsByOriginAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "year") Integer year,
@@ -52,7 +52,7 @@ public class PersistenceController {
         return persistenceService.getFlightsByOrigin(origin);
     }
 
-    @GetMapping(value = "/flight/origin/{origin}/{destination}/{year}/{month}/{day}")
+    @GetMapping(value = "/flight/filter/{origin}/{destination}/{year}/{month}/{day}")
     public List<Flight> getFlightsByOriginAndDestinationAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "destination") String destination,
@@ -63,6 +63,36 @@ public class PersistenceController {
 
         LocalDateTime date = LocalDateTime.of(year, month, day, 0, 0);
         return persistenceService.getFlightsByOriginAndDestinationAndDate(origin, destination, date);
+    }
+
+    @GetMapping(value = "/flight/filter/{origin}/{destination}")
+    public List<Flight> getByOriginAndDestination(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "destination") String destination){
+        return persistenceService.getFlightsByOriginAndDestination(origin,destination);
+    }
+
+    @GetMapping(value = "/flight/filter/{origin}/{destination}/{hasReturn}/{year}/{month}/{day}")
+    public List<Flight> getFlightsByOriginAndDestinationAndDateAndType(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "destination") String destination,
+            @PathVariable(value = "hasReturn") Boolean hasReturn,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return persistenceService.getFlightByOriginAndDestinationAndDateAndType(origin, destination, LocalDateTime.of(year,month,day,0,0), hasReturn);
+    }
+
+    @GetMapping(value = "/flight/filter/type/{origin}/{hasReturn}/{year}/{month}/{day}")
+    public List<Flight> getFlightsByOriginAndDateAndType(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "hasReturn") Boolean hasReturn,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return persistenceService.getFlightsByOriginAndDateAndType(origin, LocalDateTime.of(year,month,day,0,0), hasReturn);
     }
 
 }
