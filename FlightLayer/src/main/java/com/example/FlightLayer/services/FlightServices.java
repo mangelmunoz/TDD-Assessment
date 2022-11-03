@@ -19,6 +19,26 @@ public class FlightServices {
         RestAssured.baseURI = "http://localhost:8080/api/persistence";
     }
 
+    public String getOrigins(){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/origins")
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+
+    public String getDestinations(String origin){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/destinations/" + origin)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+
     public String getFlights(){
 
         JsonPath statusCode = given()
