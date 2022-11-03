@@ -98,7 +98,7 @@ public class PersistenceService {
         try {
             Country country1 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(country)).get();
             if (country1 != null) {
-                return flightRepository.findByOriginAndDeparture(country1, departure).orElse(new ArrayList<>());
+                return flightRepository.findByOriginAndDepartureBetween(country1, departure.minusDays(3), departure.plusDays(3)).orElse(new ArrayList<>());
             } else return new ArrayList<>();
         }
         catch(Exception e){

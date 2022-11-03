@@ -34,7 +34,7 @@ public class FlightServices {
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
                 .when()
-                .get(baseURI + "/flight/origin/" + country)
+                .get(baseURI + "/flight/filter/" + country)
                 .getBody().jsonPath();
 
         return statusCode.prettify();
@@ -73,7 +73,7 @@ public class FlightServices {
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
                 .when()
-                .get(baseURI + "/flight/filter/" + origin + "/" + type + "/" + year + "/"+ month + "/"+ day)
+                .get(baseURI + "/flight/filter/type/" + origin + "/" + type + "/" + year + "/"+ month + "/"+ day)
                 .getBody().jsonPath();
 
         return statusCode.prettify();
@@ -83,9 +83,22 @@ public class FlightServices {
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
                 .when()
-                .get(baseURI + "/flight/filter/" + origin + "/" + destination + "/" + "/" + year + "/"+ month + "/"+ day + "/"+ type)
+                .get(baseURI + "/flight/filter/" + origin + "/" + destination + "/" + type + "/" + year + "/"+ month + "/"+ day )
                 .getBody().jsonPath();
 
         return statusCode.prettify();
     }
+
+    public String getFlightByOriginAndDestinationAndDateAndType(String origin, String destination, Boolean hasReturn, Integer year, Integer month, Integer day){
+
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/filter/" + origin + "/" + destination + "/" + hasReturn + "/"+ year + "/"+ month + "/"+ day)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+
+    }
+
 }
