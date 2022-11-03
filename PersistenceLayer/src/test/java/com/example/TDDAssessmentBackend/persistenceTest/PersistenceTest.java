@@ -48,4 +48,28 @@ public class PersistenceTest {
         Assertions.assertNotEquals(0, getFlightsByOrigin.size());
         Assertions.assertEquals(0, getFlightsByOriginWrong.size());
     }
+
+    @Test
+    public void givenOrigin_whenOriginSelected_returnList(){
+
+    }
+
+    @Test
+    public void givenOriginAndDate_whenOriginAndDateSelected_returnListWithDateRange(){
+
+    }
+
+    @Test
+    public void givenOriginAndDestinationAndDate_whenOriginAndDestinationAndDateSelected_returnListWithDateRange(){
+
+    }
+
+    @Test
+    public void givenOriginAndTypeAndDate_whenOriginAndTypeAndDateSelected_returnListWithDateRange(){
+
+    }
+    @Test
+    public void givenOriginAndDestinationAndTypeAndDate_whenOriginAndDestinationAndTypeAndDateSelected_returnListWithDateRange(){
+
+    }
 }
