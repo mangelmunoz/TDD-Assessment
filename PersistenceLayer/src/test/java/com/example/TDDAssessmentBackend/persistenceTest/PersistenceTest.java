@@ -60,26 +60,38 @@ public class PersistenceTest {
     }
 
     @Test
-    public void givenOrigin_whenOriginSelected_returnList(){
-
-    }
-
-    @Test
     public void givenOriginAndDate_whenOriginAndDateSelected_returnListWithDateRange(){
+        List<Flight> getFlightsByOriginAndDate = persistenceService.getFlightsByOriginAndDate("VALENCIA", LocalDateTime.of(2022,11,07,0,0));
+        List<Flight> getFlightsByOriginAndDate1 = persistenceService.getFlightsByOriginAndDate("VALENCIA", LocalDateTime.of(2024,11,07,0,0));
+
+        Assertions.assertNotEquals(0,getFlightsByOriginAndDate.size());
+        Assertions.assertEquals(0, getFlightsByOriginAndDate1.size());
 
     }
 
     @Test
     public void givenOriginAndDestinationAndDate_whenOriginAndDestinationAndDateSelected_returnListWithDateRange(){
+        List<Flight> getFlightsByOriginAndDestinationAndDate = persistenceService.getFlightsByOriginAndDestinationAndDate("VALENCIA", "CORDOBA", LocalDateTime.of(2022,11,07,0,0));
+        List<Flight> getFlightsByOriginAndDestinationAndDate1 = persistenceService.getFlightsByOriginAndDestinationAndDate("VALENCIA", "CORDOBA", LocalDateTime.of(2022,11,07,0,0));
 
+        Assertions.assertNotEquals(0,getFlightsByOriginAndDestinationAndDate.size());
+        Assertions.assertEquals(0, getFlightsByOriginAndDestinationAndDate1.size());
     }
 
     @Test
     public void givenOriginAndTypeAndDate_whenOriginAndTypeAndDateSelected_returnListWithDateRange(){
+        List<Flight> getFlights = persistenceService.getFlightsByOriginAndDateAndType("VALENCIA", LocalDateTime.of(2022,11,07,0,0), false);
+        List<Flight> getFlights1 = persistenceService.getFlightsByOriginAndDateAndType("VALENCIA", LocalDateTime.of(2022,11,07,0,0), true);
 
+        Assertions.assertNotEquals(0,getFlights.size());
+        Assertions.assertEquals(0, getFlights1.size());
     }
     @Test
     public void givenOriginAndDestinationAndTypeAndDate_whenOriginAndDestinationAndTypeAndDateSelected_returnListWithDateRange(){
+        List<Flight> getFlights = persistenceService.getFlightByOriginAndDestinationAndDateAndType("VALENCIA", "CORDOBA", LocalDateTime.of(2022,11,07,0,0), false);
+        List<Flight> getFlights1 = persistenceService.getFlightByOriginAndDestinationAndDateAndType("VALENCIA", "CORDOBA", LocalDateTime.of(2022,11,07,0,0), true);
 
+        Assertions.assertNotEquals(0,getFlights.size());
+        Assertions.assertEquals(0, getFlights1.size());
     }
 }
