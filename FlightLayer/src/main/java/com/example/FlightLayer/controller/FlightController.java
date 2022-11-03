@@ -21,12 +21,12 @@ public class FlightController {
         return flightServices.getFlights();
     }
 
-    @GetMapping(value = "/origin/{origin}")
+    @GetMapping(value = "/filter/{origin}")
     public String getFlightsByOrigin(@PathVariable(value = "origin") String origin){
         return flightServices.getFlightsByOrigin(origin);
     }
 
-    @GetMapping(value = "/flight/origin/{origin}/{year}/{month}/{day}")
+    @GetMapping(value = "/flight/filter/{origin}/{year}/{month}/{day}")
     public String getFlightsByOriginAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "year") Integer year,

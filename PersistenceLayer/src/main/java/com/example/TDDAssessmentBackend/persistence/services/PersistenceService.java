@@ -78,12 +78,6 @@ public class PersistenceService {
     public List<Passenger> getPassengers(){
         return passengerRepository.findAll();
     }
-
-
-    //TODO: Flights por ORIGEN, por DESTINO, si es IDA o IDA y VUELTA, por FECHA
-
-    //TODO: Devolver nombre y datos de las ciudades
-
     public List<Country> getCountries(){
         return countryRepository.findAll();
     }
@@ -116,7 +110,7 @@ public class PersistenceService {
         try {
             Country country1 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(origin)).get();
             Country country2 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(destination)).get();
-            if (country1 != null) {
+            if (country1 != null && country2 != null) {
                 return flightRepository.findByOriginAndDestinationAndDepartureBetween(country1, country2, departure.minusDays(3), departure.plusDays(3)).orElse(new ArrayList<>());
             } else return new ArrayList<>();
         }
@@ -142,22 +136,8 @@ public class PersistenceService {
         try {
             Country country1 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(origin)).get();
             Country country2 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(destination)).get();
-            if (country1 != null) {
+            if (country1 != null && country2 != null) {
                 return flightRepository.findByOriginAndDestinationAndHasReturnAndDepartureBetween(country1, country2, hasReturn, departure.minusDays(3), departure.plusDays(3)).orElse(new ArrayList<>());
-            } else return new ArrayList<>();
-        }
-        catch(Exception e){
-            return new ArrayList<>();
-        }
-    }
-
-    //TODO: Origen destino
-    public List<Flight> getFlightByOriginAndDestination(String origin, String destination){
-        try {
-            Country country1 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(origin)).get();
-            Country country2 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(destination)).get();
-            if (country1 != null) {
-                return flightRepository.findByOriginAndDestination(country1, country2).orElse(new ArrayList<>());
             } else return new ArrayList<>();
         }
         catch(Exception e){
