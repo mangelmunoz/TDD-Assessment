@@ -40,11 +40,21 @@ public class FlightServices {
         return statusCode.prettify();
     }
 
+    public String getFlightsByOriginAndDestination(String country, String destination){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/filter/" + country + "/" + destination)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+
     public String getFlightsByOriginAndDate(String country, Integer year, Integer month, Integer day){
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
                 .when()
-                .get(baseURI + "/flight/origin/" + country + "/" + year + "/"+ month + "/"+ day)
+                .get(baseURI + "/flight/filter/" + country + "/" + year + "/"+ month + "/"+ day)
                 .getBody().jsonPath();
 
         return statusCode.prettify();
@@ -53,10 +63,29 @@ public class FlightServices {
         JsonPath statusCode = given()
                 .header("Content-Type","application/json")
                 .when()
-                .get(baseURI + "/flight/origin/" + origin + "/" + destination + "/" + year + "/"+ month + "/"+ day)
+                .get(baseURI + "/flight/filter/" + origin + "/" + destination + "/" + year + "/"+ month + "/"+ day)
                 .getBody().jsonPath();
 
         return statusCode.prettify();
     }
 
+    public String getFlightsByOriginAndTypeAndDate(String origin, Boolean type, Integer year, Integer month, Integer day){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/filter/" + origin + "/" + type + "/" + year + "/"+ month + "/"+ day)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+
+    public String getFlightsByOriginAndDestinationAndDateAndType(String origin, String destination, Integer year, Integer month, Integer day, Boolean type){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/filter/" + origin + "/" + destination + "/" + "/" + year + "/"+ month + "/"+ day + "/"+ type)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
 }

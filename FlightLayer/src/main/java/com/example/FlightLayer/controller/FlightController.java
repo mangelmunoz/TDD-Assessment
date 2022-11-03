@@ -21,7 +21,7 @@ public class FlightController {
         return flightServices.getFlights();
     }
 
-    @GetMapping(value = "/filter/{origin}")
+    @GetMapping(value = "/flight/{origin}")
     public String getFlightsByOrigin(@PathVariable(value = "origin") String origin){
         return flightServices.getFlightsByOrigin(origin);
     }
@@ -36,7 +36,15 @@ public class FlightController {
         return flightServices.getFlightsByOriginAndDate(origin, year, month, day);
     }
 
-    @GetMapping(value = "/flight/origin/{origin}/{destination}/{year}/{month}/{day}")
+    @GetMapping(value = "/flight/filter/{origin}/{destination}")
+    public String getFlightsByOriginAndDestination(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "destination") String destination
+    ){
+        return flightServices.getFlightsByOriginAndDestination(origin,destination);
+    }
+
+    @GetMapping(value = "/flight/filter/{origin}/{destination}/{year}/{month}/{day}")
     public String getFlightsByOriginAndDestinationAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "destination") String destination,
@@ -46,5 +54,29 @@ public class FlightController {
     ){
         return flightServices.getFlightsByOriginAndDestinationAndDate(origin, destination, year, month, day);
     }
+
+    @GetMapping(value = "/flight/filter/type/{origin}/{type}/{year}/{month}/{day}")
+    public String getFlightsByOriginAndDateAndTYpe(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "type") Boolean type,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return flightServices.getFlightsByOriginAndTypeAndDate(origin, type, year, month, day);
+    }
+
+    @GetMapping(value = "/flight/filter/{origin}/{destination}/{type}/{year}/{month}/{day}")
+    public String getFlightsByOriginAndDestinationAndTypeAnsDate(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "destination") String destination,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "type") Boolean type,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return flightServices.getFlightsByOriginAndDestinationAndDateAndType(origin, destination, year, month, day, type);
+    }
+
 
 }
