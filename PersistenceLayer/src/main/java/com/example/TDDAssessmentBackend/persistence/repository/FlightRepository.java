@@ -17,7 +17,8 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     Optional<List<Flight>> findByDepartureBetween(LocalDateTime start, LocalDateTime end);
 
-    Optional<List<Flight>> findByOriginAndDeparture(Country origin, LocalDateTime departure);
+    @Query("select f from Flight f where f.origin = ?1 and f.departure between ?2 and ?3")
+    Optional<List<Flight>> findByOriginAndDepartureBetween(Country origin, LocalDateTime departure, LocalDateTime departure1);
 
     Optional<List<Flight>> findByOriginAndDestinationAndDepartureBetween(Country origin, Country destination, LocalDateTime departure, LocalDateTime departure1);
 

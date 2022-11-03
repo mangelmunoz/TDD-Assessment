@@ -35,7 +35,7 @@ public class FlightController {
         return flightServices.getFlightsByOrigin(origin);
     }
 
-    @GetMapping(value = "/flight/filter/{origin}/{year}/{month}/{day}")
+    @GetMapping(value = "/filter/{origin}/{year}/{month}/{day}")
     public String getFlightsByOriginAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "year") Integer year,
@@ -47,7 +47,7 @@ public class FlightController {
 
 
 
-    @GetMapping(value = "/flight/filter/{origin}/{destination}")
+    @GetMapping(value = "/filter/{origin}/{destination}")
     public String getFlightsByOriginAndDestination(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "destination") String destination
@@ -55,7 +55,7 @@ public class FlightController {
         return flightServices.getFlightsByOriginAndDestination(origin,destination);
     }
 
-    @GetMapping(value = "/flight/filter/{origin}/{destination}/{year}/{month}/{day}")
+    @GetMapping(value = "/filter/{origin}/{destination}/{year}/{month}/{day}")
     public String getFlightsByOriginAndDestinationAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "destination") String destination,
@@ -66,8 +66,8 @@ public class FlightController {
         return flightServices.getFlightsByOriginAndDestinationAndDate(origin, destination, year, month, day);
     }
 
-    @GetMapping(value = "/flight/filter/type/{origin}/{type}/{year}/{month}/{day}")
-    public String getFlightsByOriginAndDateAndTYpe(
+    @GetMapping(value = "/filter/type/{origin}/{type}/{year}/{month}/{day}")
+    public String getFlightsByOriginAndDateAndType(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "type") Boolean type,
             @PathVariable(value = "year") Integer year,
@@ -77,8 +77,8 @@ public class FlightController {
         return flightServices.getFlightsByOriginAndTypeAndDate(origin, type, year, month, day);
     }
 
-    @GetMapping(value = "/flight/filter/{origin}/{destination}/{type}/{year}/{month}/{day}")
-    public String getFlightsByOriginAndDestinationAndTypeAnsDate(
+    @GetMapping(value = "/filter/{origin}/{destination}/{type}/{year}/{month}/{day}")
+    public String getFlightsByOriginAndDestinationAndTypeAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "destination") String destination,
             @PathVariable(value = "year") Integer year,

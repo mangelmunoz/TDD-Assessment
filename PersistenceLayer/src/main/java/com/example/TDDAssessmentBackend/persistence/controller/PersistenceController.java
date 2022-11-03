@@ -61,7 +61,7 @@ public class PersistenceController {
             @PathVariable(value = "day") Integer month,
             @PathVariable(value = "day") Integer day
     ){
-        return persistenceService.getFlightsByOrigin(origin);
+        return persistenceService.getFlightsByOriginAndDate(origin, LocalDateTime.of(year, month, day, 0, 0));
     }
 
     @GetMapping(value = "/flight/filter/{origin}/{destination}/{year}/{month}/{day}")
