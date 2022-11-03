@@ -16,7 +16,7 @@ public class FlightController {
     @Autowired
     private FlightServices flightServices;
 
-    @GetMapping
+    @GetMapping(value = "/origins")
     public String getOrigins(){
         return flightServices.getOrigins();
     }
