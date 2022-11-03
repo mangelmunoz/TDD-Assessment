@@ -4,6 +4,7 @@ import com.example.TDDAssessmentBackend.persistence.models.Country;
 import com.example.TDDAssessmentBackend.persistence.models.Flight;
 import com.example.TDDAssessmentBackend.persistence.models.Passenger;
 import com.example.TDDAssessmentBackend.persistence.models.dto.PassengerDTO;
+import com.example.TDDAssessmentBackend.persistence.models.enums.ECountry;
 import com.example.TDDAssessmentBackend.persistence.models.mapper.FlightMapper;
 import com.example.TDDAssessmentBackend.persistence.models.mapper.PassengerMapper;
 import com.example.TDDAssessmentBackend.persistence.repository.CountryRepository;
@@ -65,6 +66,32 @@ public class PersistenceService {
         return flightRepository.save(flight);
     }
 
+    public List<Country> getOrigins(){
+        return countryRepository.findAll();
+    }
+
+    public List<Country> getDestinations(String origin){
+        try {
+            Country country1 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(origin)).get();
+            if (country1 != null) {
+
+                List<Flight> flights = flightRepository.findByOrigin(country1).orElse(new ArrayList<>());
+                if (flights.isEmpty()){
+                    return null;
+                }
+
+                List<Country> destinations = new ArrayList<>();
+                for(Flight flight: flights){
+                    destinations.add(flight.getDestination());
+                }
+
+                return destinations;
+            } else return new ArrayList<>();
+        }
+        catch(Exception e){
+            return new ArrayList<>();
+        }
+    }
     public List<Flight> getFlights(){
         return flightRepository.findAll();
     }

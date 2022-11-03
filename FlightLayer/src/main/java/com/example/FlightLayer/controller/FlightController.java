@@ -17,6 +17,15 @@ public class FlightController {
     private FlightServices flightServices;
 
     @GetMapping
+    public String getOrigins(){
+        return flightServices.getOrigins();
+    }
+
+    @GetMapping(value = "/destinations/{origin}")
+    public String getDestinations(@PathVariable(value = "origin") String origin){
+        return flightServices.getDestinations(origin);
+    }
+    @GetMapping
     public String getFlights(){
         return flightServices.getFlights();
     }

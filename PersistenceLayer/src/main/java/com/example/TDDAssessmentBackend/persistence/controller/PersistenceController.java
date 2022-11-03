@@ -1,8 +1,10 @@
 package com.example.TDDAssessmentBackend.persistence.controller;
 
+import com.example.TDDAssessmentBackend.persistence.models.Country;
 import com.example.TDDAssessmentBackend.persistence.models.Flight;
 import com.example.TDDAssessmentBackend.persistence.models.Passenger;
 import com.example.TDDAssessmentBackend.persistence.models.dto.PassengerDTO;
+import com.example.TDDAssessmentBackend.persistence.models.enums.ECountry;
 import com.example.TDDAssessmentBackend.persistence.models.mapper.FlightMapper;
 import com.example.TDDAssessmentBackend.persistence.services.PersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,16 @@ public class PersistenceController {
     @GetMapping
     public List<Flight> getFlights(){
         return persistenceService.getFlights();
+    }
+
+    @GetMapping(value = "/origins")
+    public List<Country> getOrigins(@PathVariable(value = "origin") String origin){
+        return persistenceService.getOrigins();
+    }
+
+    @GetMapping(value = "/destinations/{origin}")
+    public List<Country> getDestinations(@PathVariable(value = "origin") String origin){
+        return persistenceService.getDestinations(origin);
     }
 
     @PostMapping(value = "/passenger/add")
