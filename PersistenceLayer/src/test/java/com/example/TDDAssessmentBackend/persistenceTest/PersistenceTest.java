@@ -72,7 +72,7 @@ public class PersistenceTest {
     @Test
     public void givenOriginAndDestinationAndDate_whenOriginAndDestinationAndDateSelected_returnListWithDateRange(){
         List<Flight> getFlightsByOriginAndDestinationAndDate = persistenceService.getFlightsByOriginAndDestinationAndDate("VALENCIA", "CORDOBA", LocalDateTime.of(2022,11,07,0,0));
-        List<Flight> getFlightsByOriginAndDestinationAndDate1 = persistenceService.getFlightsByOriginAndDestinationAndDate("VALENCIA", "CORDOBA", LocalDateTime.of(2022,11,07,0,0));
+        List<Flight> getFlightsByOriginAndDestinationAndDate1 = persistenceService.getFlightsByOriginAndDestinationAndDate("VALENCIA", "CORDOBA", LocalDateTime.of(2024,11,07,0,0));
 
         Assertions.assertNotEquals(0,getFlightsByOriginAndDestinationAndDate.size());
         Assertions.assertEquals(0, getFlightsByOriginAndDestinationAndDate1.size());
