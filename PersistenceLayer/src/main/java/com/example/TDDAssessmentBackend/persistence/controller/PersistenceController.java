@@ -29,7 +29,7 @@ public class PersistenceController {
     }
 
     @GetMapping(value = "/origins")
-    public List<Country> getOrigins(@PathVariable(value = "origin") String origin){
+    public List<Country> getOrigins(){
         return persistenceService.getOrigins();
     }
 
