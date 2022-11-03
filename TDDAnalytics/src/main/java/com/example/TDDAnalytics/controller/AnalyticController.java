@@ -31,6 +31,7 @@ public class AnalyticController {
 
     @PostMapping("/add")
     public Analytic addAnalytic(@RequestBody Analytic analytic){
+        analytic.setDate(LocalDateTime.now());
         return analyticService.addAnalytic(analytic);
     }
 }
