@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,25 @@ public class FlightServices {
                 .header("Content-Type","application/json")
                 .when()
                 .get(baseURI + "/flight/origin/" + country)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+
+    public String getFlightsByOriginAndDate(String country, Integer year, Integer month, Integer day){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/origin/" + country + "/" + year + "/"+ month + "/"+ day)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+    public String getFlightsByOriginAndDestinationAndDate(String origin, String destination, Integer year, Integer month, Integer day){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/origin/" + origin + "/" + destination + "/" + year + "/"+ month + "/"+ day)
                 .getBody().jsonPath();
 
         return statusCode.prettify();

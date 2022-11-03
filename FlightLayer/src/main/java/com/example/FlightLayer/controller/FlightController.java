@@ -26,4 +26,25 @@ public class FlightController {
         return flightServices.getFlightsByOrigin(origin);
     }
 
+    @GetMapping(value = "/flight/origin/{origin}/{year}/{month}/{day}")
+    public String getFlightsByOriginAndDate(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return flightServices.getFlightsByOriginAndDate(origin, year, month, day);
+    }
+
+    @GetMapping(value = "/flight/origin/{origin}/{destination}/{year}/{month}/{day}")
+    public String getFlightsByOriginAndDestinationAndDate(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "destination") String destination,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return flightServices.getFlightsByOriginAndDestinationAndDate(origin, destination, year, month, day);
+    }
+
 }

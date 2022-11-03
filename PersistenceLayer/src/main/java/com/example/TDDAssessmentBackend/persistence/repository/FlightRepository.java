@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     Optional<List<Flight>> findByOrigin(Country country);
+
     Optional<List<Flight>> findByOriginAndDestination(Country origin, Country destination);
 
     Optional<List<Flight>> findByDepartureBetween(LocalDateTime start, LocalDateTime end);
@@ -23,7 +24,5 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
     Optional<List<Flight>> findByOriginAndHasReturnAndDepartureBetween(Country origin, Boolean hasReturn, LocalDateTime departure, LocalDateTime departure1);
 
     Optional<List<Flight>> findByOriginAndDestinationAndHasReturnAndDepartureBetween(Country origin, Country destination, Boolean hasReturn, LocalDateTime departure, LocalDateTime departure1);
-
-    Optional<List<Flight>> findByOriginAndDestination(Country origin, Country destination);
 
 }

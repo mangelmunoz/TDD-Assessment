@@ -8,6 +8,7 @@ import com.example.TDDAssessmentBackend.persistence.services.PersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -39,6 +40,29 @@ public class PersistenceController {
     @GetMapping(value = "/flight/origin/{origin}")
     public List<Flight> getFlightsByOrigin(@PathVariable(value = "origin") String origin){
         return persistenceService.getFlightsByOrigin(origin);
+    }
+
+    @GetMapping(value = "/flight/origin/{origin}/{year}/{month}/{day}")
+    public List<Flight> getFlightsByOriginAndDate(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "day") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+        return persistenceService.getFlightsByOrigin(origin);
+    }
+
+    @GetMapping(value = "/flight/origin/{origin}/{destination}/{year}/{month}/{day}")
+    public List<Flight> getFlightsByOriginAndDestinationAndDate(
+            @PathVariable(value = "origin") String origin,
+            @PathVariable(value = "destination") String destination,
+            @PathVariable(value = "year") Integer year,
+            @PathVariable(value = "month") Integer month,
+            @PathVariable(value = "day") Integer day
+    ){
+
+        LocalDateTime date = LocalDateTime.of(year, month, day, 0, 0);
+        return persistenceService.getFlightsByOriginAndDestinationAndDate(origin, destination, date);
     }
 
 }
