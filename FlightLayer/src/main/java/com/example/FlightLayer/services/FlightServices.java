@@ -29,4 +29,14 @@ public class FlightServices {
         return statusCode.prettify();
     }
 
+    public String getFlightsByOrigin(String country){
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/flight/origin/" + country)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+    }
+
 }

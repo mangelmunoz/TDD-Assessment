@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -36,5 +37,15 @@ public class PersistenceTest {
         Assertions.assertEquals(flight.getPrice(), passenger.getPrice());
         Assertions.assertEquals(flight.getPrice() * 0.5, passenger_under9.getPrice());
         Assertions.assertEquals(0, passenger_under2.getPrice());
+    }
+
+    @Test
+    public void whenOrigenSelected_getListFromOrigin_returnsList(){
+
+        List<Flight> getFlightsByOrigin = persistenceService.getFlightsByOrigin("VALENCIA");
+        List<Flight> getFlightsByOriginWrong = persistenceService.getFlightsByOrigin("KINGSTON");
+
+        Assertions.assertNotEquals(0, getFlightsByOrigin.size());
+        Assertions.assertEquals(0, getFlightsByOriginWrong.size());
     }
 }
