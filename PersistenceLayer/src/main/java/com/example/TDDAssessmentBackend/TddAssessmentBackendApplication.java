@@ -40,6 +40,7 @@ public class TddAssessmentBackendApplication {
 			Flight flight11 = persistenceService.addFlight(new Flight(11, "WIZ-2234","WIZZAIR", LocalDateTime.of(2022,11,9,18,30), LocalDateTime.of(2022,11,9,20,30), new Country(5, ECountry.SPARTA), new Country(3, ECountry.TORREDONJIMENO), 250.0, 50, true, 30.0, false, null, null, new ArrayList<>()));
 			Flight flight12 = persistenceService.addFlight(new Flight(12, "WIZ-2234","WIZZAIR", LocalDateTime.of(2022,11,9,12,30), LocalDateTime.of(2022,11,9,16,30), new Country(5, ECountry.SPARTA), new Country(1, ECountry.VALENCIA), 250.0, 50, true, 30.0, true, flight9, List.of(new Country(3, ECountry.TORREDONJIMENO)), new ArrayList<>()));
 
+			Flight flight13 = persistenceService.addFlight(new Flight(13, "IBE-2734","IBERIA", LocalDateTime.of(2022,11,6,12,30), LocalDateTime.of(2022,11,06,13,30), new Country(2, ECountry.CORDOBA), new Country(1, ECountry.VALENCIA), 200.0, 50, true, 15.0,false, null, new ArrayList<>(), new ArrayList<>()));
 
 		};
 
