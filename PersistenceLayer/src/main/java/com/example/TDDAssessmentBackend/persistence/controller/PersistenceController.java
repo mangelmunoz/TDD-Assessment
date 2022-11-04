@@ -108,4 +108,9 @@ public class PersistenceController {
         return persistenceService.getFlightsByOriginAndDateAndType(origin, LocalDateTime.of(year,month,day,0,0), hasReturn);
     }
 
+    @GetMapping(value = "/searchFlight/{flightId}")
+    public Flight getFlightById(@PathVariable(value = "flightId") Integer id){
+        return persistenceService.getFlightById(id);
+    }
+
 }

@@ -121,4 +121,16 @@ public class FlightServices {
 
     }
 
+    public String getFlightById(Integer id){
+
+        JsonPath statusCode = given()
+                .header("Content-Type","application/json")
+                .when()
+                .get(baseURI + "/searchFlight/" + id)
+                .getBody().jsonPath();
+
+        return statusCode.prettify();
+
+    }
+
 }

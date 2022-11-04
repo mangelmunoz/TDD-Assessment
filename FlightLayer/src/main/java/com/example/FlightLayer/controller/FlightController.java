@@ -55,6 +55,7 @@ public class FlightController {
         return flightServices.getFlightsByOriginAndDestination(origin,destination);
     }
 
+
     @GetMapping(value = "/filter/{origin}/{destination}/{year}/{month}/{day}")
     public String getFlightsByOriginAndDestinationAndDate(
             @PathVariable(value = "origin") String origin,
@@ -87,6 +88,11 @@ public class FlightController {
             @PathVariable(value = "day") Integer day
     ){
         return flightServices.getFlightsByOriginAndDestinationAndDateAndType(origin, destination, year, month, day, type);
+    }
+
+    @GetMapping(value = "/searchFlight/{flightId}")
+    public String getFlightById(@PathVariable(value = "flightId") Integer id){
+        return flightServices.getFlightById(id);
     }
 
 

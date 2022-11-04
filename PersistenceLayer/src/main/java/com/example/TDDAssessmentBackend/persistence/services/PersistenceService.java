@@ -199,4 +199,8 @@ public class PersistenceService {
             return new ArrayList<>();
         }
     }
+
+    public Flight getFlightById(Integer id){
+        return flightRepository.findById(id).orElse(new Flight());
+    }
 }
