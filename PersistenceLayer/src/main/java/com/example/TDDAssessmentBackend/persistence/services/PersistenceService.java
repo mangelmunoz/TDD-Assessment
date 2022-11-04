@@ -50,6 +50,9 @@ public class PersistenceService {
         else{
             passenger.setPrice(chosenFlight.getPrice());
         }
+        if(passenger.getLuggage()){
+            passenger.setPrice(passenger.getPrice() + passenger.getFlight().getLuggagePrice());
+        }
 
         Passenger passenger1 = passengerRepository.save(passenger);
 

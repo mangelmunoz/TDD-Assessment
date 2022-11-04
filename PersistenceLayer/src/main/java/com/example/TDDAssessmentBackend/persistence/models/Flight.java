@@ -50,6 +50,9 @@ public class Flight {
     private Boolean hasLuggagge;
 
     @Column
+    private Double luggagePrice;
+
+    @Column
     private Boolean hasReturn;
 
     @ManyToOne(fetch = FetchType.EAGER)
