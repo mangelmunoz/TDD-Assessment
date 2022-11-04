@@ -59,7 +59,7 @@ public class PersistenceController {
     public List<Flight> getFlightsByOriginAndDate(
             @PathVariable(value = "origin") String origin,
             @PathVariable(value = "year") Integer year,
-            @PathVariable(value = "day") Integer month,
+            @PathVariable(value = "month") Integer month,
             @PathVariable(value = "day") Integer day
     ){
         return persistenceService.getFlightsByOriginAndDate(origin, LocalDateTime.of(year, month, day, 0, 0));
