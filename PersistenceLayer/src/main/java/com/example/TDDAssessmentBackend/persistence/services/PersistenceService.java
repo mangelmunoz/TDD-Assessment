@@ -16,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class PersistenceService {
@@ -73,7 +75,7 @@ public class PersistenceService {
         return countryRepository.findAll();
     }
 
-    public List<Country> getDestinations(String origin){
+    public HashSet<Country> getDestinations(String origin){
         try {
             Country country1 = countryRepository.findByCountry(flightMapper.fromStringtoECountry(origin)).get();
             if (country1 != null) {
@@ -83,16 +85,17 @@ public class PersistenceService {
                     return null;
                 }
 
-                List<Country> destinations = new ArrayList<>();
+                HashSet<Country> destinations = new HashSet<>();
                 for(Flight flight: flights){
+                    if(destinations.contains(flight.getDestination().getCountry()));
                     destinations.add(flight.getDestination());
                 }
 
                 return destinations;
-            } else return new ArrayList<>();
+            } else return new HashSet<>();
         }
         catch(Exception e){
-            return new ArrayList<>();
+            return new HashSet<>();
         }
     }
     public List<Flight> getFlights(){
