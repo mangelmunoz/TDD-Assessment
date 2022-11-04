@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,7 @@ public class PersistenceController {
     }
 
     @GetMapping(value = "/destinations/{origin}")
-    public List<Country> getDestinations(@PathVariable(value = "origin") String origin){
+    public HashSet<Country> getDestinations(@PathVariable(value = "origin") String origin){
         return persistenceService.getDestinations(origin);
     }
 
